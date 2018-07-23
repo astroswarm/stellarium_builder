@@ -1,0 +1,13 @@
+---
+image: "astroswarm/stellarium:latest"
+manifests:
+  -
+    image: "astroswarm/stellarium-x86_64:latest"
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: "astroswarm/stellarium-armv7l:latest"
+    platform:
+      architecture: arm
+      os: linux

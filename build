@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+set -e
+
+ARCH=`uname -m`
+VERSION=0.18.1
+
+echo "Detected architecture: $ARCH."
+docker build \
+  --build-arg ARCH=$ARCH \
+  --build-arg VERSION=$VERSION \
+  --tag astroswarm/stellarium-$ARCH:$VERSION \
+  --tag astroswarm/stellarium-$ARCH:latest \
+ ./
+
+echo "Would you like to release this image now (y/n)?"
+read release
+if [ $release = "y" ]; then
+  echo "Pushing to AstroSwarm registry."
+  docker push astroswarm/stellarium-$ARCH:$VERSION
+  docker push astroswarm/stellarium-$ARCH:latest
+fi

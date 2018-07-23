@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# This tool releases a multi-architecture docker image, as defined in
+# multiarch.yml, using the latest builds for each defined architecture.
+
+# Requires manifest-tool be installed into your system PATH.
+# See: https://github.com/estesp/manifest-tool
+
+echo "Enter Docker username: "
+read USERNAME
+echo "Enter Docker password (hidden): "
+read -s PASSWORD
+
+echo "Creating multiarch image..."
+
+manifest --debug --username $USERNAME --password $PASSWORD push from-spec multiarch.yml
