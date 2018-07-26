@@ -43,7 +43,7 @@ RUN echo "#!/usr/bin/env sh" > /start.sh
 RUN echo "/bin/rm -f /tmp/.X0-lock" >> /start.sh
 RUN echo "/usr/bin/Xvfb :0 -screen 0 ${GUI_WIDTH}x${GUI_HEIGHT}x${BIT_DEPTH} &" >> /start.sh
 RUN echo "/usr/bin/x11vnc -display :0 -forever &" >> /start.sh
-RUN echo "DISPLAY=:0 /usr/local/stellarium" >> /start.sh
+RUN echo "DISPLAY=:0 /usr/local/bin/stellarium" >> /start.sh
 RUN echo "" >> /start.sh
 RUN chmod +x /start.sh
 
